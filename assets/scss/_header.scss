@@ -1,0 +1,192 @@
+/* Header Area CSS */
+.header {
+    position: relative;
+    background-image: url(../images/mobile/image-header.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    color: $white;
+    height: 100vh;
+
+    @include breakpoint-down(medium) {
+        &.open {
+            .header__mobile {
+                > span:nth-child(1) {
+                    transform: rotate(45deg) translate(0.375rem, 0.375rem);
+                    transform-origin: center;
+                }
+
+                > span:nth-child(2) {
+                    opacity: 0;
+                }
+
+                > span:nth-child(3) {
+                    transform: rotate(-45deg) translate(0.375rem, -0.375rem);
+                    transform-origin: center;
+                }
+            }
+
+            .header__nav {
+                opacity: 1;
+                visibility: visible;
+                z-index: 10;
+            }
+        }
+    }
+
+    @include breakpoint-up(medium) {
+        background-image: url(../images/desktop/image-header.jpg);
+    }
+
+    &__wrapper {
+        padding: 1.5rem 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__logo {
+        width: 8rem;
+
+        @include breakpoint-up(medium) {
+            width: 10rem;
+        }
+    }
+
+    &__nav {
+        position: relative;
+
+        @include breakpoint-down(medium) {
+            position: absolute;
+            top: 6rem;
+            width: 85%;
+            height: 45%;
+            margin: 0 auto;
+            background-color: $white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            z-index: -10;
+            transition: all 250ms ease-in-out;
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: 0px;
+                right: -0.25rem;
+                width: 2.5rem;
+                height: 2.5rem;
+                transform: translate(0, -50%) rotate(-90deg);
+                border-left: 1.5rem solid transparent;
+                border-right: 1.5rem solid transparent;
+                border-bottom: 1.5rem solid white;
+            }
+        }
+
+        a {
+            color: $veryDarkGrayisBlue;
+            font-size: 1.125rem;
+
+            @include breakpoint-down(medium) {
+                &:not(:last-child) {
+                    color: $darkGrayishBlue;
+                    margin-bottom: 2rem;
+                } 
+            }            
+
+            @include breakpoint-up(large) {
+                color: $white;
+                margin: 0 1rem;
+                padding: 0.625rem;
+                transition: color 200ms ease-in;
+
+                &:hover {
+                    color: $darkDesaturatedCyan;
+                }
+
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+
+            &.active {
+                background-color: $white;
+                color: $veryDarkDesaturatedBlue;
+                font-family: 'Fraunces', serif;
+                font-size: 1rem;
+                padding: 0.75rem 1.5rem;
+                border-radius: 20rem;
+                text-transform: uppercase;
+                transition: 250ms ease-in;
+
+                @include breakpoint-down(medium) {
+                    background-color: $yellow;
+                    padding: 0.75rem 1.75rem;
+                }
+
+                &:hover {
+                    background-color: $darkModerateCyan;
+                    color: $white;
+                }
+            }
+            
+        }
+    }
+
+    &__mobile {
+
+        > span {
+            display: block;
+            width: 1.875rem;
+            height: 0.125rem;
+            background-color: $white;
+            cursor: pointer;
+            transition: all 200ms ease-in;
+
+            &:not(:last-child) {
+                margin-bottom: 0.375rem;
+            }
+
+        }
+
+        @include breakpoint-up(large) {
+            display: none;
+        }
+    }
+
+    .banner__wrapper {
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, 0%);
+
+        @include breakpoint-down(small) {
+            top: 20%;
+        }
+
+        .banner__title {
+            margin-bottom: 5rem;
+            width: 100%;
+            
+            h1 {
+                font-size: 3.5rem;
+                text-align: center;
+                text-transform: uppercase;
+                letter-spacing: 0.25rem;
+
+                @include breakpoint-down(small) {
+                    font-size: 2.5rem;
+                }
+            }
+        }
+
+        .banner__arrow {
+            width: 3rem;
+            height: 10rem;
+            margin: 0 auto;
+        }
+    }
+}

@@ -1,0 +1,75 @@
+/* About Area CSS */
+.about {
+
+    &__wrapper {
+
+        @include breakpoint-up(large) {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .col-1, .col-2 {
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center top;
+            height: 100%;
+            min-height: 75vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+
+            @include breakpoint-up(medium) {
+                 min-height: 50vh;
+            }
+            
+            @include breakpoint-up(large) {             
+                min-height: 32rem;
+            }
+
+            .content {
+                width: 85%;
+                color: $darkDesaturatedCyan;
+                margin-bottom: 2.5rem;
+                text-align: center;
+
+                @include breakpoint-up(medium) {
+                    width: 50%;
+                }
+
+                h3 {
+                    font-size: 1.75rem;
+                    margin-bottom: 1rem;
+
+                    @include breakpoint-down(small) {
+                        font-size: 1.5rem;
+                    }
+                }
+
+                p {
+                    font-size: 1rem;
+                }
+            }
+        
+        }
+        
+        .col-1 {
+            background-image: url(../images/mobile/image-graphic-design.jpg);
+
+            @include breakpoint-up(medium) {
+                background-image: url(../images/desktop/image-graphic-design.jpg);
+            }
+        }
+
+        .col-2 {
+            background-image: url(../images/mobile/image-photography.jpg);
+
+            @include breakpoint-up(medium) {
+                background-image: url(../images/desktop/image-photography.jpg);
+            }
+
+        }
+
+    }
+    
+}

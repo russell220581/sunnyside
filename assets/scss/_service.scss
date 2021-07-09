@@ -1,0 +1,108 @@
+/* Service Area CSS */
+.service {
+    &__wrapper {
+        @include breakpoint-up(large) {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            
+            &.reverse {
+                .service__image {
+                    order: 1;
+                }
+                
+                .service__content {
+                    order: 2;
+                }
+            }
+        }
+    }
+
+    &__image {
+        position: relative;
+        width: 100%;
+        min-height: 50vh;
+
+        @include breakpoint-up(large) {
+            min-height: 30rem;
+            order: 2;
+        }
+
+        &::after {
+            content: "";
+            background-image: url(../images/mobile/image-transform.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+
+            @include breakpoint-up(medium) {
+                background-image: url(../images/desktop/image-transform.jpg);
+            }
+        }
+
+        &.img-2 {
+            &::after {
+                background-image: url(../images/mobile/image-stand-out.jpg);
+
+                @include breakpoint-up(medium) {
+                    background-image: url(../images/desktop/image-stand-out.jpg);
+                }
+            }            
+        }
+    }
+
+    &__content { 
+        @include breakpoint-down(small) { 
+            padding: 4rem 7.5%;
+            text-align: center;
+        }
+
+        @include breakpoint-up(medium) {
+            padding: 8rem;
+            text-align: center;
+        }
+
+        @include breakpoint-up(large) {
+            order: 1;
+            min-height: 30rem;
+            padding: 8rem 7.5%;
+            text-align: left;
+        }
+        
+        h2 {
+            font-size: 3rem;
+
+            @include breakpoint-down(small) {
+                font-size: 2rem;
+            }
+        }
+
+        p {
+            margin: 1rem 0;
+        }
+
+        a {
+            color: $veryDarkDesaturatedBlue;
+            font-family: 'Fraunces', serif;
+            text-transform: uppercase;
+            position: relative;
+
+            &::before {
+                content: "";
+                position: absolute;
+                bottom: -0.125rem;
+                right: 0;
+                width: 8rem;
+                height: 0.5rem;
+                background-color: $yellow;
+                opacity: 0.3;
+            }
+        }
+    }
+}
